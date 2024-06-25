@@ -9679,7 +9679,8 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .product-item .btn:hover {
-  color: #FFD333 !important;
+  /* color: #FFD333 !important; */
+  color: #FFD333;
 }
 
 .table.table-borderless thead tr,
