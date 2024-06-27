@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Product Wishlist</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Brand</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="#" class="btn px-0" id="nav-wishlist" data-toggle="modal" data-target="#wishlistModal">
+                    <i class="fas fa-heart text-primary"></i>
+                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;" id="wishlist-count">0</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Product Item -->
+<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+    <div class="product-item bg-light mb-4">
+        <div class="product-img position-relative overflow-hidden">
+            <img class="img-fluid w-100" style="height: 300px; width: 300px;" src="img/men/shoes/Sneakers6.jpg" alt="">
+            <div class="product-action">
+                <a class="btn btn-outline-dark btn-square product-heart-btn" href="#"><i class="far fa-heart"></i></a>
+            </div>
+        </div>
+        <div class="text-center py-4">
+            <a class="h6 text-decoration-none text-truncate" href="#">Shoes 6</a>
+            <div class="d-flex align-items-center justify-content-center mt-2">
+                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-1">
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star-half-alt text-primary mr-1"></small>
+                <small>(99)</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+    <div class="product-item bg-light mb-4">
+        <div class="product-img position-relative overflow-hidden">
+            <img class="img-fluid w-100" style="height: 300px; width: 300px;" src="img/men/shoes/Sneakers2.jpg" alt="">
+            <div class="product-action">
+                <a class="btn btn-outline-dark btn-square product-heart-btn" href="#"><i class="far fa-heart"></i></a>
+            </div>
+        </div>
+        <div class="text-center py-4">
+            <a class="h6 text-decoration-none text-truncate" href="#">Shoes 6</a>
+            <div class="d-flex align-items-center justify-content-center mt-2">
+                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-1">
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star-half-alt text-primary mr-1"></small>
+                <small>(99)</small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+    <div class="product-item bg-light mb-4">
+        <div class="product-img position-relative overflow-hidden">
+            <img class="img-fluid w-100" style="height: 300px; width: 300px;" src="img/men/shoes/Sneakers3.jpg" alt="">
+            <div class="product-action">
+                <a class="btn btn-outline-dark btn-square product-heart-btn" href="#"><i class="far fa-heart"></i></a>
+            </div>
+        </div>
+        <div class="text-center py-4">
+            <a class="h6 text-decoration-none text-truncate" href="#">Shoes 6</a>
+            <div class="d-flex align-items-center justify-content-center mt-2">
+                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-1">
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star-half-alt text-primary mr-1"></small>
+                <small>(99)</small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+    <div class="product-item bg-light mb-4">
+        <div class="product-img position-relative overflow-hidden">
+            <img class="img-fluid w-100" style="height: 300px; width: 300px;" src="img/men/shoes/Sneakers5.jpg" alt="">
+            <div class="product-action">
+                <a class="btn btn-outline-dark btn-square product-heart-btn" href="#"><i class="far fa-heart"></i></a>
+            </div>
+        </div>
+        <div class="text-center py-4">
+            <a class="h6 text-decoration-none text-truncate" href="#">Shoes 6</a>
+            <div class="d-flex align-items-center justify-content-center mt-2">
+                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-1">
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star-half-alt text-primary mr-1"></small>
+                <small>(99)</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Wishlist Modal -->
+<div class="modal fade" id="wishlistModal" tabindex="-1" role="dialog" aria-labelledby="wishlistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="wishlistModalLabel">Wishlist</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="wishlist-items">
+                    <!-- Wishlist items will be added here by JavaScript -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the heart button in the product and the wishlist count in the nav
+    const productHeartBtn = document.querySelector('.product-heart-btn');
+    const wishlistCountSpan = document.getElementById('wishlist-count');
+    const wishlistItemsDiv = document.getElementById('wishlist-items');
+
+    // Function to update the wishlist count and save to localStorage
+    function updateWishlistCount(count) {
+        localStorage.setItem('wishlistCount', count);
+        wishlistCountSpan.textContent = count;
+    }
+
+    // Function to load the wishlist count from localStorage
+    function loadWishlistCount() {
+        let count = parseInt(localStorage.getItem('wishlistCount')) || 0;
+        wishlistCountSpan.textContent = count;
+        return count;
+    }
+
+    // Function to add a product to the wishlist
+    function addProductToWishlist(product) {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlist.push(product);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        displayWishlist();
+    }
+
+    // Function to display the wishlist in the modal
+    function displayWishlist() {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlistItemsDiv.innerHTML = '';
+        wishlist.forEach((item, index) => {
+            const productItem = document.createElement('div');
+            productItem.classList.add('wishlist-item', 'd-flex', 'align-items-center', 'mb-3');
+            productItem.innerHTML = `
+                <img src="${item.image}" class="img-fluid" style="height: 100px; width: 100px;" alt="${item.name}">
+                <div class="ml-3">
+                    <h5>${item.name}</h5>
+                    <p>$${item.price}</p>
+                </div>
+                <button class="btn btn-outline-danger ml-auto remove-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
+            `;
+            wishlistItemsDiv.appendChild(productItem);
+        });
+
+        // Add event listeners to the remove buttons
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const index = this.getAttribute('data-index');
+                removeProductFromWishlist(index);
+            });
+        });
+    }
+
+    // Function to remove a product from the wishlist
+    function removeProductFromWishlist(index) {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlist.splice(index, 1);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        updateWishlistCount(wishlist.length);
+        displayWishlist();
+    }
+
+    // Load the wishlist count and display the wishlist on page load
+    loadWishlistCount();
+    displayWishlist();
+
+    // Add event listener to the product heart button
+    productHeartBtn.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default action of the link
+
+        const product = {
+            name: 'Shoes 6',
+            price: 123.00,
+            image: 'img/men/shoes/Sneakers6.jpg'
+        };
+       
+
+
+        const count = loadWishlistCount() + 1;
+        updateWishlistCount(count);
+        addProductToWishlist(product);
+    });
+});
+</script>
+
+</body>
+</html>
+
+
