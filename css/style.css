@@ -5463,7 +5463,7 @@ a.close.disabled {
   border: 1px solid rgba(0, 0, 0, 0.2);
   outline: 0;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
 .modal-backdrop {
@@ -5507,6 +5507,16 @@ a.close.disabled {
   position: relative;
   flex: 1 1 auto;
   padding: 1rem;
+}
+.modal-body-checkout {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 5px;
+}
+.total-price-checkout{
+  text-align: center;
+  font-size: x-large;
+  font-weight: 900;
 }
 
 .modal-footer {
