@@ -9692,11 +9692,11 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .product-item .product-img img {
-  transition: .5s;
+  transition: .9s;
 }
 
 .product-item:hover .product-img img {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .product-item .btn:hover {
