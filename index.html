@@ -1219,7 +1219,7 @@
         <!-- Product view modal end -->
     
         <!-- Cart modal start -->
-        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-card">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1238,8 +1238,48 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Cart modal end -->
+
+<!-- Cart modal start -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-card">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Your Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-pd">
+                <table class="show-cart table">
+                    <thead>
+                        <tr>
+                            <th>Product Image</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Cart items will be inserted here -->
+                    </tbody>
+                </table>
+                <div class="grand-total">Total price: $<span class="total-cart"></span> | Total items: <span class="total-count"></span></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="checkout.html" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart modal end -->
+
+
+
 
         <!-- Wishlist Modal start-->
         <div class="modal fade" id="wishlistModal" tabindex="-1" role="dialog" aria-labelledby="wishlistModalLabel" aria-hidden="true">
@@ -1358,6 +1398,180 @@
     <script src="js/main.js"></script>
     <script src="js/add-to-card.js"></script>
     <script src="js/wishlist.js"></script>
+<script>
+    $(document).ready(function() {
+  const shoppingCart = (function() {
+    let cart = [];
+
+    class Item {
+      constructor(name, price, count, image) {
+        this.name = name;
+        this.price = price;
+        this.count = count;
+        this.image = image;
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem('shoppingCart', JSON.stringify(cart));
+    }
+
+    function loadCart() {
+      cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+    }
+
+    if (localStorage.getItem("shoppingCart") !== null) {
+      loadCart();
+    }
+
+    const obj = {};
+
+    obj.addItemToCart = function(name, price, count, image) {
+      for (const item of cart) {
+        if (item.name === name) {
+          item.count++;
+          saveCart();
+          return;
+        }
+      }
+      const newItem = new Item(name, price, count, image);
+      cart.push(newItem);
+      saveCart();
+    };
+
+    obj.setCountForItem = function(name, count) {
+      for (const item of cart) {
+        if (item.name === name) {
+          item.count = count;
+          break;
+        }
+      }
+      saveCart();
+    };
+
+    obj.removeItemFromCart = function(name) {
+      for (const item of cart) {
+        if (item.name === name) {
+          item.count--;
+          if (item.count === 0) {
+            cart = cart.filter(cartItem => cartItem.name !== name);
+          }
+          break;
+        }
+      }
+      saveCart();
+    };
+
+    obj.removeItemFromCartAll = function(name) {
+      cart = cart.filter(item => item.name !== name);
+      saveCart();
+    };
+
+    obj.clearCart = function() {
+      cart = [];
+      saveCart();
+    };
+
+    obj.totalCount = function() {
+      return cart.reduce((total, item) => total + item.count, 0);
+    };
+
+    obj.totalCart = function() {
+      return cart.reduce((total, item) => total + item.price * item.count, 0).toFixed(2);
+    };
+
+    obj.listCart = function() {
+      return cart.map(item => {
+        const itemCopy = { ...item };
+        itemCopy.total = (item.price * item.count).toFixed(2);
+        return itemCopy;
+      });
+    };
+
+    return obj;
+  })();
+
+  function displayCart() {
+    const cartArray = shoppingCart.listCart();
+    let output = "";
+    for (const item of cartArray) {
+      output += "<tr>"
+        + `<td><img src='${item.image}' alt='${item.name}' style='width: 50px; height: 50px;'></td>`
+        + `<td>${item.name}</td>`
+        + `<td>${item.price}</td>`
+        + "<td><div class='input-group'>"
+        + `<input type='number' class='item-count form-control' data-name='${item.name}' value='${item.count}'>`
+        + "</div></td>"
+        + `<td>${item.total}</td>`
+        + `<td><button class='delete-item btn btn-danger' data-name='${item.name}'>X</button></td>`
+        + "</tr>";
+    }
+    $('.show-cart tbody').html(output);
+    $('.total-cart').html(shoppingCart.totalCart());
+    $('.total-count').html(shoppingCart.totalCount());
+  }
+
+  function updateModal(name, price, image, miles, condition, transmission, hp) {
+    $('#itemModalImage').attr('src', image);
+    $('#itemModalName').text(name);
+    $('#itemModalPrice').text(`Price: $${price}`);
+    $('#itemModalMiles').text(`Miles: ${miles}`);
+    $('#itemModalCondition').text(`Condition: ${condition}`);
+    $('#itemModalTransmission').text(`Transmission: ${transmission}`);
+    $('#itemModalHp').text(`Horsepower: ${hp}`);
+  }
+
+  // Add to cart button functionality
+  $('.add-to-cart-btn').click(function(event) {
+    event.preventDefault();
+    const name = $(this).data('name');
+    const price = Number($(this).data('price'));
+    const image = $(this).data('image');
+    shoppingCart.addItemToCart(name, price, 1, image);
+    displayCart();
+    $('#staticBackdrop').modal('show'); // Show the cart modal
+  });
+
+  // View item details in modal and handle add to cart from modal
+  $('.view-btn').click(function(event) {
+    event.preventDefault();
+    const name = $(this).data('name');
+    const price = $(this).data('price');
+    const image = $(this).data('image');
+    const miles = $(this).data('miles');
+    const condition = $(this).data('condition');
+    const transmission = $(this).data('transmission');
+    const hp = $(this).data('hp');
+
+    updateModal(name, price, image, miles, condition, transmission, hp);
+    $('#itemModal').modal('show');
+
+    // Add to cart from modal
+    $('.add-to-cart-from-modal-btn').off('click').on('click', function() {
+      shoppingCart.addItemToCart(name, Number(price), 1, image);
+      displayCart();
+      $('#itemModal').modal('hide');
+    });
+  });
+
+  // Shopping cart display and functionality
+  $('.show-cart').on("click", ".delete-item", function(event) {
+    const name = $(this).data('name');
+    shoppingCart.removeItemFromCartAll(name);
+    displayCart();
+  });
+
+  $('.show-cart').on("change", ".item-count", function(event) {
+    const name = $(this).data('name');
+    const count = Number($(this).val());
+    shoppingCart.setCountForItem(name, count);
+    displayCart();
+  });
+
+  displayCart();
+});
+
+</script>
 </body>
 
 </html>
